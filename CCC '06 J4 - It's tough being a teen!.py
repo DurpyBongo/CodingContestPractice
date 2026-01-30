@@ -33,38 +33,34 @@ ohio = [1,2,3,4,5,6,7]
 
 c = list(set(ohio) - set(intial_no_arrows))
 
-first_number = min(c)
+tasks = [1,2,3,4,5,6,7]
+final_print = []
 
-final_print.append(min(c))
-c.remove(min(c))
+while len(final_print) < 7:
+    available = []
 
-for l in range(6):
-    for i in range(len(all_extra_rules)):
-        if all_extra_rules[i][0] == first_number:
-            candidate = all_extra_rules[i][1]
-            blocked = False
+    for task in tasks:
+        if task in final_print:
+            continue
 
-            for rule in all_extra_rules:
-                if rule[1] == candidate and rule[0] not in final_print:
-                    blocked = True
-                    break
+        blocked = False
+        for rule in all_extra_rules:
+            if rule[1] == task and rule[0] not in final_print:
+                blocked = True
+                break
 
-            if not blocked and candidate not in final_print:
-                c.append(candidate)
-    c = list(c)
-    try:
-        for bahaha in final_print:
-            if bahaha == min(c):
-                c.remove(bahaha)
-        final_print.append(min(c))
-        first_number = min(c)
-        c.remove(min(c))
+        if not blocked:
+            available.append(task)
 
-        last = [str(item) for item in final_print]
-        print(' '.join(last))
-    except ValueError:
+    if not available:
         print("Cannot complete these tasks. Going to bed.")
         break
+
+    next_task = min(available)
+    final_print.append(next_task)
+
+if len(final_print) == 7:
+    print(" ".join(str(x) for x in final_print))
     
 
     
