@@ -2,8 +2,8 @@ import sys
 
 rounds = int(input())
 
-if rounds>5:
-    sys.exit()
+# if rounds>5:
+#     sys.exit()
 big_list = []
 temporary_group_three = []
 for i in range(rounds):
@@ -14,20 +14,16 @@ for i in range(rounds):
     temporary_group_three = []
 
 def checkFIX(list_of_three):
-    yes_or_no = True
     for u in range(len(list_of_three)):
         base = list_of_three[u]
         for i in range(len(list_of_three)):
-            if list_of_three[i].startswith(base) and list_of_three[i]!=base:
-                yes_or_no = False
-                break
-            elif list_of_three[i].endswith(base) and list_of_three[i]!= base:
-                yes_or_no = False
-                break
-    if yes_or_no == True:
-        return 'Yes'
-    elif yes_or_no == False:
-        return 'No'
+            if i!=u:
+                if list_of_three[i].startswith(base) or list_of_three[i].endswith(base):# and list_of_three[i]!=base:
+                    return "No"
+            # elif list_of_three[i].endswith(base) and list_of_three[i]!= base:
+            #     yes_or_no = False
+            #     break
+    return "Yes"
 
 for l in range(rounds):
     print(checkFIX(big_list[l]))
