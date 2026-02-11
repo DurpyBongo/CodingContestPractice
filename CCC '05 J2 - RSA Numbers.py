@@ -10,5 +10,3 @@ for i in range(first, second + 1):
     if count==4:
         final+=1
 print(f'The number of RSA numbers between {first} and {second} is {final}')
-
-
