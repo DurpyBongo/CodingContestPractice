@@ -1,19 +1,18 @@
+
 rounds = int(input())
-
-scores = []
+empty = []
 for i in range(rounds):
-    ligma = input()
-    scores.append(int(ligma))
+    ligma = int(input())
+    empty.append(ligma)
 
-scores.sort(reverse=True)
+x = empty.count(max(empty))
+empty.sort()
+for i in range(x):
+    empty.pop(-1)
 
-winnie = scores.copy()
+y = empty.count(max(empty))
+for i in range(y):
+    empty.pop(-1)
+b = empty.count(max(empty))
 
-for x in range(2):
-    for u in range(len(scores)):
-        if scores[u] == max(scores):
-            winnie.pop(u)
-
-hahaha = scores.count(max(scores))
-print(f'{str(max(scores))} {str(hahaha)}')
-
+print(f'{max(empty)} {b}')
